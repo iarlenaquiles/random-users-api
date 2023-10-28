@@ -2,7 +2,10 @@ package me.dio.service.impl;
 
 import java.util.List;
 
+import org.springdoc.core.converters.models.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +20,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-      public User getUser(Long id) {
+    public User getUser(Long id) {
         return userRepository.findById(id).orElseThrow(() -> {
             log.error("User not found with id {}", id);
             return new RuntimeException("User not found with id " + id);
@@ -61,5 +64,11 @@ public class UserServiceImpl implements UserService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
+
+    // public Page<User> getUsersByPage(int pageNumber, int pageSize) {
+    //     PageRequest pageable = PageRequest.of(pageNumber, pageSize);
+    //     Page<User> userPage = userRepository.findAllByPage(pageNumber, pageSize);
+    //     return userPage;
+    // }
 
 }

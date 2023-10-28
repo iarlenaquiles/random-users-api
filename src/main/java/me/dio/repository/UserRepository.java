@@ -1,5 +1,7 @@
 package me.dio.repository;
 
+import org.springframework.data.domain.Page;
+
 // import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +17,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // List<User> findByStateContainingIgnoreCase(String state);
     // List<User> findByCountryContainingIgnoreCase(String country);
     // List<User> findByEmailContainingIgnoreCase(String email);
+    // Page<User> findAllByPage(int pageNumber, int pageSize);
 }
