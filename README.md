@@ -41,6 +41,10 @@ The project is organized into several packages, each serving a specific purpose:
 
 Please note that this structure is a simple suggestion for educational purposes. Each developer is free to adapt and modify this structure according to their project needs and standards.
 
+## Project strategy
+
+The strategy was chosen to load user data when the application is started and from then on the user consumes data from the downloaded results.
+
 ## Setup
 
 These instructions guide you through cloning the repository and starting the application in Unix or Windows environments, with the development profile enabled.
