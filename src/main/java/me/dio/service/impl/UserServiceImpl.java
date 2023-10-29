@@ -3,6 +3,8 @@ package me.dio.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +26,6 @@ public class UserServiceImpl implements UserService {
         });
 
         return user.getThumbnail();
-    }
-
-    @Override
-    public List<User> findAll() {
-        return this.userRepository.findAll();
     }
 
     @Override
@@ -57,10 +54,13 @@ public class UserServiceImpl implements UserService {
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
-    // public Page<User> getUsersByPage(int pageNumber, int pageSize) {
-    // PageRequest pageable = PageRequest.of(pageNumber, pageSize);
-    // Page<User> userPage = userRepository.findAllByPage(pageNumber, pageSize);
-    // return userPage;
-    // }
+    @Override
+    public List<User> findAll() {
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
 
+    @Override
+    public Page<User> findAll(Pageable pageable) {
+        return this.userRepository.findAll(pageable);
+    }
 }
