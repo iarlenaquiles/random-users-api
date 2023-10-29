@@ -2,10 +2,7 @@ package me.dio.service.impl;
 
 import java.util.List;
 
-import org.springdoc.core.converters.models.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,13 +16,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    public User getUser(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> {
-            log.error("User not found with id {}", id);
-            return new RuntimeException("User not found with id " + id);
-        });
-    }
 
     public String getBase64Thumbnail(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> {
@@ -43,8 +33,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        return userRepository.findById(id).orElseThrow(() -> {
+            log.error("User not found with id {}", id);
+            return new RuntimeException("User not found with id " + id);
+        });
     }
 
     @Override
@@ -66,9 +58,9 @@ public class UserServiceImpl implements UserService {
     }
 
     // public Page<User> getUsersByPage(int pageNumber, int pageSize) {
-    //     PageRequest pageable = PageRequest.of(pageNumber, pageSize);
-    //     Page<User> userPage = userRepository.findAllByPage(pageNumber, pageSize);
-    //     return userPage;
+    // PageRequest pageable = PageRequest.of(pageNumber, pageSize);
+    // Page<User> userPage = userRepository.findAllByPage(pageNumber, pageSize);
+    // return userPage;
     // }
 
 }
