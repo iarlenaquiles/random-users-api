@@ -1,5 +1,7 @@
 package me.dio.service.impl;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.dio.model.User;
 import me.dio.repository.UserRepository;
 import me.dio.service.UserService;
+import me.dio.utils.ImageDownloader;
 
 @Service
 @Slf4j
@@ -25,7 +28,15 @@ public class UserServiceImpl implements UserService {
             return new RuntimeException("User not found with id in getBase64Thumbnail " + id);
         });
 
-        return user.getThumbnail();
+        byte[] imageBytes;
+        try {
+            imageBytes = ImageDownloader.downloadImage(user.getThumbnail());
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            return base64Image;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

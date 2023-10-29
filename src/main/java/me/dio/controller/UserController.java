@@ -38,4 +38,12 @@ public record UserController(UserService userService) {
         return ResponseEntity.ok(userService.findById(id));
     }
 
+    @GetMapping("/{id}/thumbnail")
+    @Operation(summary = "Get thumbnail by user", description = "Get thumbnail by user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful operation")
+    })
+    public ResponseEntity<String> getThumbnail(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getBase64Thumbnail(id));
+    }
 }
