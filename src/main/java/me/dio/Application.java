@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.servers.Server;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Initializes our RESTful API.
@@ -13,16 +14,15 @@ import io.swagger.v3.oas.annotations.servers.Server;
  * <p>
  * The {@link OpenAPIDefinition} annotation was used to enable HTTPS in the
  * Swagger UI.
- * For more details, see the following post on Stack Overflow:
- * https://stackoverflow.com/a/71132608/3072570
- * </p>
  */
 
 @OpenAPIDefinition(servers = { @Server(url = "/", description = "Default Server URL") })
 @SpringBootApplication
 @EnableJpaRepositories
+@Slf4j
 public class Application {
 	public static void main(String[] args) {
+		log.info("Application init");
 		SpringApplication.run(Application.class, args);
 	}
 }

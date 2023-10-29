@@ -37,12 +37,17 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
             ObjectMapper objectMapper = new ObjectMapper();
 
             String apiUrl = "https://randomuser.me/api/?results=200";
+
+            log.info("Calling randomuser api");
             String response = restTemplate.getForObject(apiUrl, String.class);
             RandomUserResponse userResponse;
+
             try {
                 userResponse = objectMapper.readValue(response, RandomUserResponse.class);
                 log.info("RandomUserResponse");
+
                 if (userResponse != null && userResponse.getResults() != null) {
+                    log.info("userResponse is valid");
                     List<User> users = new ArrayList<>();
 
                     for (RandomUser randomUser : userResponse.getResults()) {

@@ -7,32 +7,37 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import me.dio.model.User;
 import me.dio.repository.StatisticsRepository;
 import me.dio.service.StatisticsService;
 
 @Service
+@Slf4j
 public class StatisticsServiceImpl implements StatisticsService {
 
     @Autowired
     private StatisticsRepository statisticsRepository;
 
     public Map<String, Object> getStatistics() {
+        log.info("Get all users");
         List<User> user = statisticsRepository.findAll();
 
         Map<String, Object> statistics = new HashMap<>();
-
         Map<String, Integer> genders = new HashMap<>();
         Map<String, Integer> countries = new HashMap<>();
         Map<String, Integer> ageRange = new HashMap<>();
 
         for (User person : user) {
+            log.info("Gender process");
             String gender = person.getGender();
             genders.put(gender, genders.getOrDefault(gender, 0) + 1);
 
+            log.info("Country process");
             String country = person.getCountry();
             countries.put(country, countries.getOrDefault(country, 0) + 1);
 
+            log.info("Age process");
             int age = person.getAge();
             if (age >= 21 && age <= 30) {
                 ageRange.put("21_30", ageRange.getOrDefault("21_30", 0) + 1);
@@ -47,6 +52,7 @@ public class StatisticsServiceImpl implements StatisticsService {
             }
         }
 
+        log.info("Set statistics");
         statistics.put("genders", genders);
         statistics.put("countries", countries);
         statistics.put("age_range", ageRange);
