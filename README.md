@@ -1,26 +1,6 @@
-# DIO Spring Boot RESTful API Template
+# Random User Spring Boot RESTful API 
 
-Welcome to the DIO Spring Boot RESTful API Template! This project serves as a foundational template for creating RESTful APIs using Spring Boot 3, Spring Data JPA, and OpenAPI (Swagger) for API documentation. We have utilized the power of Java 17, the latest LTS version of Java, to build this project.
-
-As an edtech company, DIO is committed to providing valuable resources for developers and this project is no exception. It stands as a quick start guide to jump-start your API development with the best practices embedded.
-
-<p align="center">
-     <a alt="Java">
-        <img src="https://img.shields.io/badge/Java-v17-blue.svg" />
-    </a>
-    <a alt="Spring Boot">
-        <img src="https://img.shields.io/badge/Spring%20Boot-v3.1.0-brightgreen.svg" />
-    </a>
-    <a alt="Gradle">
-        <img src="https://img.shields.io/badge/Gradle-v7.6-lightgreen.svg" />
-    </a>
-    <a alt="H2">
-        <img src="https://img.shields.io/badge/H2-v2.1.214-darkblue.svg" />
-    </a>
-    <a alt="PostgreSQL">
-        <img src="https://img.shields.io/badge/PostgreSQL-v42.6.0-blue.svg" />
-    </a>
-</p>
+Welcome to the Random User Spring Boot RESTful API! This project is a RESTful APIs using Spring Boot 3, Spring Data JPA, and OpenAPI (Swagger) for API documentation. We have utilized the power of Java 17, the latest LTS version of Java, to build this project.
 
 ## Table of Contents
 
@@ -39,7 +19,7 @@ As an edtech company, DIO is committed to providing valuable resources for devel
 - **Java 17**: Leveraging the latest LTS version of Java, improving readability and efficiency.
 - **Spring Boot 3**: An upgraded version of Spring Boot, enhancing developer productivity with its auto-configuration
   feature. Generated using [Spring Initializr](https://start.spring.io/#!type=gradle-project&language=java&platformVersion=3.1.1&packaging=jar&jvmVersion=17&groupId=me.dio&artifactId=spring-boot-3-rest-api-template&name=spring-boot-3-rest-api-template&description=DIO%20Spring%20Boot%20RESTful%20API%20Template&packageName=me.dio&dependencies=web,data-jpa,h2,postgresql).
-- **Spring Data JPA**: Simplifying the database access layer by reducing the boilerplate code.
+- **Spring Data JPA**: Simplifying the database access layer.
 - **OpenAPI (Swagger)**: Integrated with OpenAPI 3, enabling seamless API documentation for better understanding and
   testing.
 
@@ -65,13 +45,13 @@ Please note that this structure is a simple suggestion for educational purposes.
 
 These instructions guide you through cloning the repository and starting the application in Unix or Windows environments, with the development profile enabled.
 
-1. Clone the repository: git clone https://github.com/digitalinnovationone/spring-boot-3-rest-api-template.git
+1. Clone the repository: git clone https://github.com/iarlenaquiles/random-users-api.git
 2. Start the application in the Unix environment: `./gradlew bootrun --args='--spring.profiles.active=dev'`
 3. Start the application in the Windows environment: `gradle.bat bootrun --args='--spring.profiles.active=dev'`
 
 ## Project Details:
 
-The project focuses on a Heroes API as an example, which includes basic CRUD operations and gain experience (XP) system. It adheres to the best practices of RESTful principles, such as idempotent operations and the use of appropriate HTTP status codes.
+The project focuses on a Random User API as an example, which includes basic CRUD operations and statistics system. It adheres to the best practices of RESTful principles, such as idempotent operations and the use of appropriate HTTP status codes.
 
 Exception handling is globally managed with a `@RestControllerAdvice` to ensure consistent handling of exceptions throughout the entire application.
 
@@ -84,8 +64,8 @@ The API documentation can be found on Swagger UI. To view it, please visit: [Swa
 ## Hosting on Railway
 
 Both this project and your PostgreSQL database are hosted on [Railway.app](https://railway.app/). To access our demo application, visit:
-- Development Environment: [https://[your-public-domain]-dev.up.railway.app/swagger-ui.html](https://heroes-api-veni-dev.up.railway.app/swagger-ui.html)
-- Production Environment: [https://[your-public-domain]-prd.up.railway.app/swagger-ui.html](https://heroes-api-veni-prd.up.railway.app/swagger-ui.html)
+- Development Environment: [https://[your-public-domain]-dev.up.railway.app/swagger-ui.html](https://-dev.up.railway.app/swagger-ui.html)
+- Production Environment: [https://[your-public-domain]-prd.up.railway.app/swagger-ui.html](https://-prd.up.railway.app/swagger-ui.html)
 
 ## Contribution
 
@@ -99,8 +79,6 @@ This project is licensed under the MIT License. Please refer to the <a href="htt
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/falvojr"><img src="https://avatars.githubusercontent.com/u/730492?v=4&s=100" width="100px;" alt=""/><br/><strong>Venilton FalvoJr</strong></a><br/><a href="https://www.linkedin.com/in/falvojr/">LinkedIn</a></td>
-    <td align="center"><a href="https://github.com/cami-la"><img src="https://avatars.githubusercontent.com/u/64323124?v=4&s=100" width="100px;" alt=""/><br/><strong>Camila Cavalcante</strong></a><br/><a href="https://www.linkedin.com/in/cami-la/">LinkedIn</a></td>
-    <td align="center"><a href="https://github.com/rafaskb"><img src="https://avatars.githubusercontent.com/u/2331058?v=4&s=100" width="100px;" alt=""/><br/><strong>Rafa Skoberg</strong></a><br/><a href="https://www.linkedin.com/in/rafaskoberg/">LinkedIn</a></td>
+    <td align="center"><a href="https://github.com/iarlenaquiles"><img src="https://avatars.githubusercontent.com/u/3675462?v=4&s=100" width="100px;" alt=""/><br/><strong>Iarlen Aquiles</strong></a><br/><a href="https://www.linkedin.com/in/iarlenaquiles/">LinkedIn</a></td>
   </tr>
 </table>
