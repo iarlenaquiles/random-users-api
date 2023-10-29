@@ -29,7 +29,7 @@ public class User implements Serializable {
     private Long id;
     private String gender;
     private String name;
-    private String last_name;
+    private String lastName;
     private String city;
     private String state;
     private String country;

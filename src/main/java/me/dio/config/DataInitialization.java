@@ -50,7 +50,7 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
 
                         user.setGender(randomUser.getGender());
                         user.setName(randomUser.getName().getFirst());
-                        user.setLast_name(randomUser.getName().getLast());
+                        user.setLastName(randomUser.getName().getLast());
                         user.setCity(randomUser.getLocation().getCity());
                         user.setState(randomUser.getLocation().getState());
                         user.setCountry(randomUser.getLocation().getCountry());
@@ -60,7 +60,6 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
                         user.setThumbnail(randomUser.getPicture().getThumbnail());
 
                         users.add(user);
-                        // userRepository.save(user);
                     }
                     log.info("Users ready to save");
                     userRepository.saveAll(users);

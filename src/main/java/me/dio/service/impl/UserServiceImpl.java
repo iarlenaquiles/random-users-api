@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import me.dio.model.User;
+import me.dio.repository.UserRepositoryCustomImpl;
 import me.dio.repository.UserRepository;
 import me.dio.service.UserService;
 import me.dio.utils.ImageDownloader;
@@ -23,14 +24,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public String getBase64Thumbnail(Long id) {
-        User user = userRepository.findById(id).orElseThrow(() -> {
-            log.error("User not found with id in getBase64Thumbnail {}", id);
-            return new RuntimeException("User not found with id in getBase64Thumbnail " + id);
-        });
-
-        byte[] imageBytes;
         try {
-            imageBytes = ImageDownloader.downloadImage(user.getThumbnail());
+            User user = userRepository.findById(id).orElseThrow(() -> {
+                log.error("User not found with id in getBase64Thumbnail {}", id);
+                return new RuntimeException("User not found with id in getBase64Thumbnail " + id);
+            });
+            byte[] imageBytes = ImageDownloader.downloadImage(user.getThumbnail());
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
             return base64Image;
         } catch (IOException e) {
@@ -49,19 +48,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User entity) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'create'");
     }
 
     @Override
     public User update(Long id, User entity) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
@@ -74,4 +70,9 @@ public class UserServiceImpl implements UserService {
     public Page<User> findAll(Pageable pageable) {
         return this.userRepository.findAll(pageable);
     }
+
+    @Override
+    public List<User> search(String query) {
+        return this.userRepository.customSearch(query);
+    }   
 }
