@@ -34,7 +34,8 @@ public class User implements Serializable {
     private String state;
     private String country;
     private String email;
-    private String birthday;
+    private String birthday;    
+    private int age;
     private String cell;
     private String thumbnail;
 }

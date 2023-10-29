@@ -1,7 +1,6 @@
 package me.dio.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,6 +51,10 @@ public record UserController(UserService userService) {
     }
 
     @GetMapping("/search")
+     @Operation(summary = "Get user by query", description = "Get user by query")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successful operation")
+    })
     public ResponseEntity<List<User>> searchUsers(@RequestParam String query) {        
         return ResponseEntity.ok(userService.search(query));
     }

@@ -56,6 +56,7 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
                         user.setCountry(randomUser.getLocation().getCountry());
                         user.setEmail(randomUser.getEmail());
                         user.setBirthday(randomUser.getDob().getDate());
+                        user.setAge(randomUser.getDob().getAge());
                         user.setCell(randomUser.getCell());
                         user.setThumbnail(randomUser.getPicture().getThumbnail());
 
