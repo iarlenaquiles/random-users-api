@@ -10,8 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.dio.exception.InvalidQueryException;
 import me.dio.model.User;
-import me.dio.repository.UserRepositoryCustomImpl;
 import me.dio.repository.UserRepository;
 import me.dio.service.UserService;
 import me.dio.utils.ImageDownloader;
@@ -73,6 +73,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> search(String query) {
+        int queryLength = query.length();
+        if (queryLength < 3 || queryLength > 64) {
+            log.error("Query length must be between 3 and 64 characters");
+            throw new InvalidQueryException("Query length must be between 3 and 64 characters.");
+        }
+
         return this.userRepository.customSearch(query);
-    }   
+    }
 }
