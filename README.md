@@ -52,7 +52,8 @@ These instructions guide you through cloning the repository and starting the app
 1. Clone the repository: git clone https://github.com/iarlenaquiles/random-users-api.git
 2. Start the application in the Unix environment: `./gradlew bootrun --args='--spring.profiles.active=dev'`
 3. Start the application in the Windows environment: `gradle.bat bootrun --args='--spring.profiles.active=dev'`
-
+4. Run redis on docker
+  ```docker run --name random-user-api-redis -p 6379:6379 -d redis``` 
 ## Project Details:
 
 The project focuses on a Random User API as an example, which includes basic CRUD operations and statistics system. It adheres to the best practices of RESTful principles, such as idempotent operations and the use of appropriate HTTP status codes.

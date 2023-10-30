@@ -19,3 +19,15 @@ spring:
       settings:
         trace: false
         web-allow-others: false
+ 
+  data:
+    redis:  
+      host: 127.0.0.1
+      port: 6379
+      
+
+  resilient4j.circuitbreaker:
+    instances:
+      statisticsCB:
+        minimumNumberOfCalls: 4
+        slidingWindowSize: 8

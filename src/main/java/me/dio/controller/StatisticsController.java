@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import me.dio.service.StatisticsService;
 
 @RestController
 @RequestMapping("/users/statistics")
+@Tag(name = "Statistics Controller", description = "RESTful API for managing usersstatistics.")
 public record StatisticsController(StatisticsService statisticsService) {
 
     @GetMapping
@@ -21,7 +23,7 @@ public record StatisticsController(StatisticsService statisticsService) {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful operation")
     })
-    public ResponseEntity<Map<String, Object>> statistics() {        
+    public ResponseEntity<Map<String, Object>> statistics() {
         return ResponseEntity.ok(statisticsService.getStatistics());
     }
 

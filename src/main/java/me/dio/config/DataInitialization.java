@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -29,6 +30,7 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
     private RestTemplate restTemplate;
 
     @Override
+    @Cacheable("loadUsers")
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.info("onApplicationEvent is running...");
        

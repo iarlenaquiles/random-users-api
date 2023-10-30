@@ -5,6 +5,7 @@ import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Cacheable("getBase64Thumbnail")
     public String getBase64Thumbnail(Long id) {
         try {
             log.info("Get user by id: " + id);
@@ -44,6 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable("findById")
     public User findById(Long id) {
         log.info("Get user by id: " + id);
 
@@ -74,6 +77,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable("findAll")
     public Page<User> findAll(Pageable pageable) {
         log.info("Get all users by pageable: " + pageable);
 
@@ -81,6 +85,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Cacheable("search")
     public List<User> search(String query) {
         log.info("Get user by query: " + query);
 
